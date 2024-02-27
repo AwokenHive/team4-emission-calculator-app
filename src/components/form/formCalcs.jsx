@@ -1,13 +1,18 @@
 import React, { useRef } from "react";
+import { FaBus } from "react-icons/fa";
+import { FaTrain } from "react-icons/fa6";
+import { MdOutlineElectricBike } from "react-icons/md";
+import { MdBubbleChart } from "react-icons/md";
+import { FaWalking } from "react-icons/fa";
+import { MdDirectionsBike } from "react-icons/md";
 
-function Form() {
+function FormCalcs() {
 
   function handleSubmit(event) {
     event.preventDefault();
     const unit = getUnit();
   }
   const getUnit = () => {
-    return mileageRef.current.value;
   };
 
   return (
@@ -16,21 +21,22 @@ function Form() {
       <form onSubmit={handleSubmit}>
         <label>
           <p>Distance Travelled:</p>
-          <p type="number" ref={distanceRef}></p>
+          <p type="number"></p>
         </label>
         <label>
-          <p>CO<sub>2</sub>:</p>
+          <p>CO<sub>2</sub> produced: <div value="CO2"></div><MdBubbleChart/></p>
         </label>
         <label>
             <p>Possible CO<sub>2</sub> saved using routes:</p>
-            <p>Bus:</p>
-            <p>Coach:</p>
-            <p>Train:</p>
-            <p>Electric Bike:</p>
+            <p><FaBus/> Bus:</p>
+            <p><FaTrain/> Train:</p>
+            <p><MdOutlineElectricBike/> Electric Bike:</p>
+            <p><MdDirectionsBike/> Bike:</p>
+            <p><FaWalking/> Walk:</p>
         </label>
       </form>
     </div>
   );
 }
 
-export default Form;
+export default FormCalcs;
