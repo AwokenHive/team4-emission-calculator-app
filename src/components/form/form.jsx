@@ -30,7 +30,9 @@ function Form() {
         <label>
           <p>Choose Vehicle:</p>
           <select ref={selectRef}>
-            <option value="avCarType">Average Car, Van and Motorbike</option>
+            <option value="avCarType">Average Car</option>
+            <option value="electricCar">Electric Car</option>
+            <option value="vanType">Van</option>
           </select>
         </label>
         <label>
