@@ -1,0 +1,13 @@
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.logo h1 {
+  font-family: "Arial", sans-serif;
+  color: #00ce22;
+  font-size: 2em;
+  text-decoration: underline;
+}
