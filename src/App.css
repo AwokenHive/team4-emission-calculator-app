@@ -48,12 +48,12 @@ button {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  background-color: #007bff;
+  background-color: #00ce22;
   color: #fff;
   cursor: pointer;
   margin-top: 20px;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #006832;
 }
