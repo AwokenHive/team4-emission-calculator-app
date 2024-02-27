@@ -17,7 +17,7 @@ function Form() {
 
   const getUnit = () => {
     return mileageRef.current.value;
-  }
+  };
 
   return (
     <div className="main-container">
