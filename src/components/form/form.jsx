@@ -43,7 +43,7 @@ function Form() {
           <input type="number" ref={distanceRef} required />
         </label>
         <label>
-          <p>Mileage:</p>
+          <p>Unit:</p>
           <select ref={mileageRef}>
             <option value="miles">miles</option>
             <option value="km">km</option>
