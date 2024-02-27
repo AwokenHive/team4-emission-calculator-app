@@ -45,7 +45,11 @@ app.post("/calculate-emissions", (req, res) => {
 
   console.log("Total emissions (kg):", totalEmissionsKg); // Log total emissions in kg
 
-  res.json({ emissions: totalEmissionsKg });
+  res.json({
+    emissions: (Math.round(totalEmissionsKg * 100) / 100).toFixed(2),
+    distance: (Math.round(distance * 100) / 100).toFixed(2),
+    mileage: mileage,
+  });
 });
 
 app.listen(port, () => {

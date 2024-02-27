@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-function Form() {
+function Form({ onSubmit }) {
   const distanceRef = useRef(null);
   const mileageRef = useRef(null);
   const vehicleRef = useRef(null);
@@ -28,6 +28,9 @@ function Form() {
       .then((data) => {
         console.log(data);
         setResult(data.emissions);
+        setResult(data.mileage);
+        setResult(data.distance);
+        onSubmit(data.emissions, data.distance, data.mileage); // Pass emissions, distance, and unit type to parent component
       })
       .catch((error) => {
         console.error("Error:", error);
