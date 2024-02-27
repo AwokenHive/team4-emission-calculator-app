@@ -4,9 +4,8 @@ import { IoIosLeaf } from "react-icons/io";
 import lottie from "lottie-web";
 import { defineElement } from "@lordicon/element";
 
-const leafStyle = {color: "green"}
-const carStyle = {width:'250px',height:'250px'}
-
+const leafStyle = { color: "green" };
+const carStyle = { width: "200px", height: "200px" };
 
 // define "lord-icon" custom element with default properties
 defineElement(lottie.loadAnimation);
@@ -16,10 +15,17 @@ const Navbar = () => {
     <div className="logo">
       <h1>
         E4 Emissions
-        <IoIosLeaf style={leafStyle}/>
+        <IoIosLeaf style={leafStyle} />
       </h1>
-      <lord-icon trigger="hover" src="https://cdn.lordicon.com/grcrdebf.json" colors="primary:#ffffff,secondary:#08a88a" style={carStyle}></lord-icon>
-      
+
+      <div className="icon-container responsive-icon">
+        <lord-icon
+          trigger="hover"
+          src="https://cdn.lordicon.com/grcrdebf.json"
+          colors="primary:#ffffff,secondary:#00ce22"
+          style={carStyle}
+        ></lord-icon>
+      </div>
     </div>
   );
 };
