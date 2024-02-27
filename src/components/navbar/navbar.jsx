@@ -22,7 +22,8 @@ const Navbar = () => {
         <lord-icon
           trigger="hover"
           src="https://cdn.lordicon.com/grcrdebf.json"
-          colors="primary:#ffffff,secondary:#00ce22"
+          colors="primary:#000000,secondary:#00ce22"
+          stroke="bold"
           style={carStyle}
         ></lord-icon>
       </div>

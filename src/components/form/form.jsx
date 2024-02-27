@@ -56,14 +56,10 @@ function Form() {
         <label>
           <p>Choose Vehicle:</p>
           <select ref={vehicleRef}>
-            <option value="avCarType">Average Car</option>
+          <option value="petrolCar">Petrol Car</option>
             <option value="electricCar">Electric Car</option>
-            <option value="vanType">Van</option>
+            <option value="hybridCar">Hybrid Car</option>
           </select>
-        </label>
-        <label>
-          <p>Is the vehicle a hybrid?</p>
-          <input type="checkbox" ref={hybridRef} />
         </label>
         <button type="submit">Calculate your Carbon Footprint</button>
       </form>

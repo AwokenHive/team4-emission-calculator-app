@@ -11,7 +11,8 @@ body {
   height: 100vh;
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  background-image: url('../img/bgPattern.jpg');
+  background-image: url("../img/63570896-seamless-leaves-pattern-can-be-used-for-wallpaper-website-background-wrapping-paper-autumn-bright.jpg");
+  background-size: 300px;
 }
 
 .main-container {
@@ -21,6 +22,8 @@ body {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  /* color:#fff;
+  background-image: url("../img/bgPattern.jpg"); */
 }
 
 .main-heading {
@@ -57,3 +60,4 @@ button {
 button:hover {
   background-color: #006832;
 }
+
