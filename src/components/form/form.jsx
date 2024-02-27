@@ -34,10 +34,6 @@ function Form() {
       });
   }
 
-  const getUnit = () => {
-    return mileageRef.current.value;
-  };
-
   return (
     <div className="main-container">
       <h1 className="main-heading">Emission Calculator App</h1>
@@ -56,14 +52,20 @@ function Form() {
         <label>
           <p>Choose Vehicle:</p>
           <select ref={vehicleRef}>
-          <option value="petrolCar">Petrol Car</option>
+            <option value="petrolCar">Petrol Car</option>
             <option value="electricCar">Electric Car</option>
             <option value="hybridCar">Hybrid Car</option>
           </select>
         </label>
+        <label>
+          <input type="checkbox" ref={hybridRef} />
+          <span>Hybrid</span>
+        </label>
         <button type="submit">Calculate your Carbon Footprint</button>
       </form>
-      {result && <p>Your carbon footprint is: {result} kg</p>}
+      {result !== null && (
+        <p>Your carbon footprint is: {result.toFixed(2)} kg</p>
+      )}
     </div>
   );
 }

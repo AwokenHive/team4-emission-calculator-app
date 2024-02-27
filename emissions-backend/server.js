@@ -13,22 +13,17 @@ app.use(
 );
 
 app.post("/calculate-emissions", (req, res) => {
-  const { distance, mileage, vehicleType, isHybrid } = req.body;
+  const { distance, vehicleType } = req.body;
 
   // Define emission factors for each type of vehicle (in grams per mile)
   const emissionFactors = {
-    "Average Car": 411, // This is just an example value
-    "Electric Car": 0, // Electric cars produce zero tailpipe emissions
-    Van: 269, // This is just an example value
+    petrolCar: 147.5,
+    electricCar: 4.9,
+    hybridCar: 147.5, // Adjusted emission factor for hybrid car
   };
 
   // Get the emission factor for the selected vehicle type
   let emissionFactor = emissionFactors[vehicleType];
-
-  // If the vehicle is a hybrid, reduce the emission factor by 25%
-  if (isHybrid) {
-    emissionFactor *= 0.75;
-  }
 
   // Calculate the total emissions (in grams)
   const totalEmissions = distance * emissionFactor;
