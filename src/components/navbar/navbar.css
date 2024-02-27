@@ -1,31 +1,30 @@
 @keyframes logoAnimation {
-    0% {
-      transform: scale(1);
-      opacity: 1;
-    }
-    50% {
-      transform: scale(1.1);
-      opacity: 0.5;
-    }
-    100% {
-      transform: scale(1);
-      opacity: 1;
-    }
+  0% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
-  .logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px;
+  50% {
+    transform: scale(1.1);
+    opacity: 0.5;
   }
-  
-  .logo h1 {
-    font-family: "Arial", sans-serif;
-    color: #00ce22;
-    font-size: 2em;
-    text-decoration: underline;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    animation: logoAnimation 2s ease-in-out infinite;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
-  
+}
+
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.logo h1 {
+  font-family: "Arial", sans-serif;
+  color: #00ce22;
+  font-size: 2em;
+  text-decoration: underline;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  animation: logoAnimation 2s ease-in-out infinite;
+}
