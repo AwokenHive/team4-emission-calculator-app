@@ -4,7 +4,6 @@ function Form() {
   const distanceRef = useRef(null);
   const mileageRef = useRef(null);
   const vehicleRef = useRef(null);
-  const hybridRef = useRef(null);
   const [result, setResult] = useState(null);
 
   function handleSubmit(event) {
@@ -14,7 +13,6 @@ function Form() {
       distance: distanceRef.current.value,
       mileage: mileageRef.current.value,
       vehicleType: vehicleRef.current.value,
-      isHybrid: hybridRef.current.checked,
     };
 
     console.log("Data sent to backend:", data); // Log data here
@@ -58,10 +56,6 @@ function Form() {
             <option value="electricCar">Electric Car</option>
             <option value="hybridCar">Hybrid Car</option>
           </select>
-        </label>
-        <label>
-          <input type="checkbox" ref={hybridRef} />
-          <span>Hybrid</span>
         </label>
         <button type="submit">Calculate your Carbon Footprint</button>
       </form>
