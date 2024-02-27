@@ -2,15 +2,15 @@ import "./App.css";
 import { useRef } from "react";
 
 function App() {
+  const distanceRef = useRef(null);
   const selectRef = useRef(null);
-  const checkboxRef = useRef(null);
-  const inputRef = useRef(null);
+  const hybridRef = useRef(null);
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("Input value:", inputRef.current.value);
+    console.log("Distance value:", distanceRef.current.value);
     console.log("Select value:", selectRef.current.value);
-    console.log("Checkbox value:", checkboxRef.current.checked);
+    console.log("Hybrid value:", hybridRef.current.checked);
   }
 
   return (
@@ -19,22 +19,27 @@ function App() {
 
       <form onSubmit={handleSubmit}>
         <label>
-          <p>Name:</p>
-          <input ref={inputRef} type="text" />
+          <p>Distance Traveled:</p>
+          <input type="number" ref={distanceRef} required />
         </label>
         <label>
-          <p>Favorite color:</p>
+          <p>Mileage:</p>
           <select ref={selectRef}>
-            <option value="red">Red</option>
-            <option value="green">Green</option>
-            <option value="blue">Blue</option>
+            <option value="miles">miles</option>
+            <option value="km">km</option>
           </select>
         </label>
         <label>
-          Do you like React?
-          <input type="checkbox" ref={checkboxRef} />
+          <p>Choose Vehicle:</p>
+          <select ref={selectRef}>
+            <option value="avCarType">Average Car, Van and Motorbike</option>
+          </select>
         </label>
-        <button type="submit">Submit</button>
+        <label>
+          <p>Is the vehicle a hybrid?</p>
+          <input type="checkbox" ref={hybridRef} />
+        </label>
+        <button type="submit">Calculate your Carbon Footprint</button>
       </form>
     </div>
   );
