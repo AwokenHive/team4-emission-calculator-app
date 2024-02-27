@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// formCalcs.jsx
+import React from "react";
 import { FaBus } from "react-icons/fa";
 import { FaTrain } from "react-icons/fa";
 import { MdOutlineElectricBike } from "react-icons/md";
@@ -15,52 +16,36 @@ function EmissionsCalculatorTrain(distance, mileage) {
   if (mileage === "km") return (distance * 41) / 1000;
   else return ((distance / 0.621371) * 41) / 1000;
 }
+
 function EmissionsCalculatorEBike(distance, mileage) {
   if (mileage === "km") return (distance * 14.8) / 1000;
   else return ((distance / 0.621371) * 14.8) / 1000;
 }
+
 function EmissionsCalculatorBike(distance, mileage) {
   if (mileage === "km") return (distance * 21) / 1000;
   else return ((distance / 0.621371) * 21) / 1000;
 }
+
 function EmissionsCalculatorWalk(distance, mileage) {
   if (mileage === "km") return (distance * 56) / 1000;
   else return ((distance / 0.621371) * 56) / 1000;
 }
 
 function FormCalcs({ emissions, distance, mileage }) {
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-  document.getElementById("bus").textContent = EmissionsCalculatorBus(
-    distance,
-    mileage
-  ).toFixed(2);
-  document.getElementById("train").textContent = EmissionsCalculatorTrain(
-    distance,
-    mileage
-  ).toFixed(2);
-  document.getElementById("ebike").textContent = EmissionsCalculatorEBike(
-    distance,
-    mileage
-  ).toFixed(2);
-  document.getElementById("bike").textContent = EmissionsCalculatorBike(
-    distance,
-    mileage
-  ).toFixed(2);
-  document.getElementById("walk").textContent = EmissionsCalculatorWalk(
-    distance,
-    mileage
-  ).toFixed(2);
+  const busEmissions = EmissionsCalculatorBus(distance, mileage);
+  const trainEmissions = EmissionsCalculatorTrain(distance, mileage);
+  const eBikeEmissions = EmissionsCalculatorEBike(distance, mileage);
+  const bikeEmissions = EmissionsCalculatorBike(distance, mileage);
+  const walkEmissions = EmissionsCalculatorWalk(distance, mileage);
 
   return (
     <div className="main-container">
       <h1 className="main-heading">Emission Calculator App</h1>
-      <form onSubmit={handleSubmit}>
+      <form>
         <label>
           <p>
-            Distance Travelled:{distance}
-            {mileage}
+            Distance Travelled: {distance} {mileage}
           </p>
         </label>
         <label>
@@ -73,20 +58,20 @@ function FormCalcs({ emissions, distance, mileage }) {
             Possible CO<sub>2</sub> produced using routes:
           </p>
           <p>
-            <FaBus /> Bus: <p id="bus">{distance} </p>
+            <FaBus /> Bus: {busEmissions.toFixed(2)} kg
           </p>
           <p>
-            <FaTrain /> Train: <p id="train"> {distance}</p>
+            <FaTrain /> Train: {trainEmissions.toFixed(2)} kg
           </p>
           <p>
-            <MdOutlineElectricBike /> Electric Bike:{" "}
-            <p id="ebike">{distance} </p>
+            <MdOutlineElectricBike /> Electric Bike: {eBikeEmissions.toFixed(2)}{" "}
+            kg
           </p>
           <p>
-            <MdDirectionsBike /> Bike: <p id="bike">{distance} </p>
+            <MdDirectionsBike /> Bike: {bikeEmissions.toFixed(2)} kg
           </p>
           <p>
-            <FaWalking /> Walk: <p id="walk">{distance} </p>
+            <FaWalking /> Walk: {walkEmissions.toFixed(2)} kg
           </p>
         </label>
       </form>
