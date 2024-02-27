@@ -15,7 +15,7 @@ function Form({ onSubmit }) {
       vehicleType: vehicleRef.current.value,
     };
 
-    console.log("Data sent to backend:", data); // Log data here
+    console.log("Data sent to backend:", data);
 
     fetch("http://localhost:3002/calculate-emissions", {
       method: "POST",
@@ -27,10 +27,8 @@ function Form({ onSubmit }) {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setResult(data.emissions);
-        setResult(data.mileage);
-        setResult(data.distance);
-        onSubmit(data.emissions, data.distance, data.mileage); // Pass emissions, distance, and unit type to parent component
+        setResult(data);
+        onSubmit(data.emissions, data.distance, data.mileage);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -40,7 +38,7 @@ function Form({ onSubmit }) {
   return (
     <div className="main-container">
       <h1 className="main-heading">Emission Calculator App</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form">
         <label>
           <p>Distance Travelled:</p>
           <input type="number" ref={distanceRef} required />
@@ -63,7 +61,7 @@ function Form({ onSubmit }) {
         <button type="submit">Calculate your Carbon Footprint</button>
       </form>
       {result !== null && (
-        <p>Your carbon footprint is: {result.toFixed(2)} kg</p>
+        <p>Your carbon footprint is: {result.emissions.toFixed(2)} kg</p>
       )}
     </div>
   );

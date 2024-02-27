@@ -13,16 +13,16 @@ app.use(
 );
 
 app.post("/calculate-emissions", (req, res) => {
-  var { distance, mileage, vehicleType } = req.body;
+  let { distance, mileage, vehicleType } = req.body;
 
   // Convert vehicleType to lowercase
   const vehicleTypeLowerCase = vehicleType.toLowerCase();
 
-  // Define emission factors for each type of vehicle (in grams per mile)
+  // Define emission factors for each type of vehicle (in grams per kilometer)
   const emissionFactors = {
-    petrolcar: 147.5, // Make sure keys are lowercase
+    petrolcar: 147.5, 
     electriccar: 4.9,
-    hybridcar: 103, // Adjusted emission factor for hybrid car
+    hybridcar: 103 * 0.75, // Adjusted emission factor for hybrid car (reduced by 25%)
   };
 
   // Get the emission factor for the selected vehicle type
@@ -30,9 +30,9 @@ app.post("/calculate-emissions", (req, res) => {
 
   console.log("Emission factor:", emissionFactor); // Log emission factor
 
-  // If the vehicle is a hybrid, reduce the emission factor by 25%
+  // Convert distance to kilometers if the mileage unit is in miles
   if (mileage === "miles") {
-    distance /= 0.621371;
+    distance *= 1.60934;
   }
 
   // Calculate the total emissions (in grams)
