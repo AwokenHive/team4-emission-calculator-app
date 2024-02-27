@@ -22,7 +22,7 @@ app.post("/calculate-emissions", (req, res) => {
   const emissionFactors = {
     petrolcar: 147.5, // Make sure keys are lowercase
     electriccar: 4.9,
-    hybridcar: 147.5, // Adjusted emission factor for hybrid car
+    hybridcar: 103, // Adjusted emission factor for hybrid car
   };
 
   // Get the emission factor for the selected vehicle type
