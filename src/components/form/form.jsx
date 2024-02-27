@@ -17,6 +17,8 @@ function Form() {
       isHybrid: hybridRef.current.checked,
     };
 
+    console.log("Data sent to backend:", data); // Log data here
+
     fetch("http://localhost:3002/calculate-emissions", {
       method: "POST",
       headers: {
@@ -33,10 +35,6 @@ function Form() {
         console.error("Error:", error);
       });
   }
-
-  const getUnit = () => {
-    return mileageRef.current.value;
-  };
 
   return (
     <div className="main-container">
@@ -56,14 +54,20 @@ function Form() {
         <label>
           <p>Choose Vehicle:</p>
           <select ref={vehicleRef}>
-          <option value="petrolCar">Petrol Car</option>
+            <option value="petrolCar">Petrol Car</option>
             <option value="electricCar">Electric Car</option>
             <option value="hybridCar">Hybrid Car</option>
           </select>
         </label>
+        <label>
+          <input type="checkbox" ref={hybridRef} />
+          <span>Hybrid</span>
+        </label>
         <button type="submit">Calculate your Carbon Footprint</button>
       </form>
-      {result && <p>Your carbon footprint is: {result} kg</p>}
+      {result !== null && (
+        <p>Your carbon footprint is: {result.toFixed(2)} kg</p>
+      )}
     </div>
   );
 }
