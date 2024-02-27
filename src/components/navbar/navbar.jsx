@@ -14,7 +14,7 @@ const Navbar = () => {
   return (
     <div className="logo">
       <h1>
-        E4 Emissions
+        EcoEmissions
         <IoIosLeaf style={leafStyle} />
       </h1>
 
