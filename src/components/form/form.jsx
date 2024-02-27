@@ -1,18 +1,37 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
 function Form() {
   const distanceRef = useRef(null);
   const mileageRef = useRef(null);
   const vehicleRef = useRef(null);
   const hybridRef = useRef(null);
+  const [result, setResult] = useState(null);
 
   function handleSubmit(event) {
     event.preventDefault();
-    const unit = getUnit();
-    console.log("Distance value:", distanceRef.current.value);
-    console.log("Mileage unit:", unit);
-    console.log("Vehicle type:", vehicleRef.current.value);
-    console.log("Hybrid value:", hybridRef.current.checked);
+
+    const data = {
+      distance: distanceRef.current.value,
+      mileage: mileageRef.current.value,
+      vehicleType: vehicleRef.current.value,
+      isHybrid: hybridRef.current.checked,
+    };
+
+    fetch("http://localhost:3002/calculate-emissions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setResult(data.emissions);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   }
 
   const getUnit = () => {
@@ -48,6 +67,7 @@ function Form() {
         </label>
         <button type="submit">Calculate your Carbon Footprint</button>
       </form>
+      {result && <p>Your carbon footprint is: {result} kg</p>}
     </div>
   );
 }
