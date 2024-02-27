@@ -17,6 +17,8 @@ function Form() {
       isHybrid: hybridRef.current.checked,
     };
 
+    console.log("Data sent to backend:", data); // Log data here
+
     fetch("http://localhost:3002/calculate-emissions", {
       method: "POST",
       headers: {
