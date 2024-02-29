@@ -3,7 +3,7 @@ import { FaBus, FaTrain, FaWalking } from "react-icons/fa";
 import { MdOutlineElectricBike, MdDirectionsBike } from "react-icons/md";
 
 function calculateEmissions(distance, mileage, emissionFactor) {
-  const distanceInKm = mileage === "km" ? distance : distance / 0.621371;
+  const distanceInKm = mileage === "km" ? distance : distance * 1.60934;
   return (distanceInKm * emissionFactor) / 1000;
 }
 
