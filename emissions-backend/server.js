@@ -28,15 +28,17 @@ app.post("/calculate-emissions", (req, res) => {
   // Get the emission factor for the selected vehicle type
   let emissionFactor = emissionFactors[vehicleTypeLowerCase];
 
+  let distanceModified = distance;
+
   console.log("Emission factor:", emissionFactor); // Log emission factor
 
-  // Convert distance to kilometers if the mileage unit is in miles
-  if (mileage === "miles") {
-    distance *= 1.60934;
-  }
+  // // Convert distance to kilometers if the mileage unit is in miles
+   if (mileage === "miles") {
+     distanceModified *= 1.60934;
+   }
 
   // Calculate the total emissions (in grams)
-  const totalEmissions = distance * emissionFactor;
+  const totalEmissions = distanceModified * emissionFactor;
 
   console.log("Total emissions (g):", totalEmissions); // Log total emissions
 
